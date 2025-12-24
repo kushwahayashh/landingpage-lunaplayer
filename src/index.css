@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  /* Light Mode - Clean Blue & White */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  
+  --border: #e2e8f0;
+}
+
+.dark {
+  /* Dark Mode - True Black with Blue Accents */
+  --background: #0a0a0a;          /* Near black */
+  --foreground: #fafafa;
+  
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #141414;           /* Slightly lighter black */
+  --secondary-foreground: #fafafa;
+  
+  --accent: #60a5fa;
+  --accent-foreground: #0a0a0a;
+  
+  --muted: #171717;               /* Muted dark */
+  --muted-foreground: #a1a1aa;
+  
+  --card: #141414;                /* Card background */
+  --card-foreground: #fafafa;
+  
+  --border: #262626;              /* Subtle border */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground transition-colors duration-300 antialiased font-sans selection:bg-primary selection:text-primary-foreground;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-md border border-border;
+  }
+  
+  .glow-text {
+    @apply drop-shadow-[0_0_10px_rgba(59,130,246,0.5)];
+  }
+}
