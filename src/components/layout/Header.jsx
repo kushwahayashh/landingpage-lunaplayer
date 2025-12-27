@@ -118,28 +118,50 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
+            className="md:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 bg-black z-40"
           >
-            <nav className="px-6 py-6 flex flex-col gap-2">
-              {navLinks.map((link, index) => (
+            {/* Header bar in mobile menu */}
+            <div className="flex justify-between items-center px-6 py-5 border-b border-border">
+              <a href="#" className="text-xl font-bold tracking-tighter flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                <div className="w-6 h-6 bg-foreground text-background flex items-center justify-center font-mono text-sm">
+                  L
+                </div>
+                <span className="font-mono text-white">LUNA</span>
+              </a>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                >
+                  {theme === 'dark' ? <BsSunFill className="text-lg" /> : <BsMoonStarsFill className="text-lg" />}
+                </button>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xl focus:outline-none text-white"
+                >
+                  <FaTimes />
+                </button>
+              </div>
+            </div>
+            
+            {/* Navigation links */}
+            <nav className="px-6 py-8 flex flex-col gap-4">
+              {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={cn(
-                    "text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 py-3 px-4 rounded-md transition-colors",
-                    index !== navLinks.length - 1 && "border-b border-border/50"
-                  )}
+                  className="text-xl font-medium text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                   {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="pt-4 mt-2 border-t border-border">
+              <div className="pt-6 mt-4">
                 <Button href="#download" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
                   Download Now
                 </Button>
