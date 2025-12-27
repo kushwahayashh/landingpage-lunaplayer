@@ -16,7 +16,7 @@ const Footer = () => {
 
           {/* Links */}
           <nav className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-xs md:text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Documentation</a>
+            <a href="https://github.com/kushwahayashh/LunaPlayer/blob/master/README.md" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Documentation</a>
             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms</a>
             <a href="https://github.com/kushwahayashh/LunaPlayer" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">

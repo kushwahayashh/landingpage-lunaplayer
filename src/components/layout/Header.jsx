@@ -53,6 +53,7 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'Features', href: '#features' },
     { name: 'Gallery', href: '#gallery' },
+    { name: 'Docs', href: 'https://github.com/kushwahayashh/LunaPlayer/blob/master/README.md', external: true },
   ];
 
   return (
@@ -78,6 +79,7 @@ const Header = () => {
               key={link.name}
               href={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
             >
               {link.name}
             </a>
@@ -123,11 +125,12 @@ const Header = () => {
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
+                <a
+                  key={link.name}
                   href={link.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
                 >
                   {link.name}
                 </a>
