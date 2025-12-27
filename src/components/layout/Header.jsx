@@ -121,13 +121,13 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 bg-black z-40"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black flex flex-col md:hidden"
           >
             {/* Header bar in mobile menu */}
-            <div className="flex justify-between items-center px-6 py-5 border-b border-border">
+            <div className="flex justify-between items-center px-6 py-5 border-b border-white/10">
               <a href="#" className="text-xl font-bold tracking-tighter flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-6 h-6 bg-foreground text-background flex items-center justify-center font-mono text-sm">
+                <div className="w-6 h-6 bg-white text-black flex items-center justify-center font-mono text-sm">
                   L
                 </div>
                 <span className="font-mono text-white">LUNA</span>
@@ -135,13 +135,13 @@ const Header = () => {
               <div className="flex items-center gap-4">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                  className="p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white"
                 >
                   {theme === 'dark' ? <BsSunFill className="text-lg" /> : <BsMoonStarsFill className="text-lg" />}
                 </button>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xl focus:outline-none text-white"
+                  className="text-xl focus:outline-none text-white p-2 hover:bg-white/10 rounded-full transition-colors"
                 >
                   <FaTimes />
                 </button>
@@ -149,24 +149,26 @@ const Header = () => {
             </div>
             
             {/* Navigation links */}
-            <nav className="px-6 py-8 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-xl font-medium text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-6 mt-4">
-                <Button href="#download" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                  Download Now
-                </Button>
-              </div>
-            </nav>
+            <div className="flex-1 overflow-y-auto">
+              <nav className="px-6 py-8 flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-2xl font-bold text-white hover:text-primary transition-colors py-4 border-b border-white/10"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <div className="pt-8 mt-2">
+                  <Button href="#download" size="lg" className="w-full text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                    Download Now
+                  </Button>
+                </div>
+              </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
