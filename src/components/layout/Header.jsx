@@ -118,25 +118,33 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-border overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
+            <nav className="px-6 py-6 flex flex-col gap-2">
+              {navLinks.map((link, index) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border"
+                  className={cn(
+                    "text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 py-3 px-4 rounded-md transition-colors",
+                    index !== navLinks.length - 1 && "border-b border-border/50"
+                  )}
                   onClick={() => setIsMobileMenuOpen(false)}
                   {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
                 >
                   {link.name}
                 </a>
               ))}
-              <Button href="#download" className="w-full mt-2">Download Now</Button>
-            </div>
+              <div className="pt-4 mt-2 border-t border-border">
+                <Button href="#download" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                  Download Now
+                </Button>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
