@@ -21,7 +21,7 @@ const Download = () => {
             <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed">
               Audit the code, contribute features, or report issues on GitHub.
             </p>
-            <Button variant="outline" className="mt-auto">
+            <Button variant="outline" className="mt-auto" href="https://github.com/kushwahayashh/LunaPlayer" target="_blank" rel="noopener noreferrer">
               View Repository
             </Button>
           </div>
