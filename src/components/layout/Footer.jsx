@@ -19,7 +19,7 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground transition-colors">Documentation</a>
             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="https://github.com" className="hover:text-foreground transition-colors">
+            <a href="https://github.com/kushwahayashh/LunaPlayer" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
               <FaGithub className="text-lg" />
             </a>
           </nav>
