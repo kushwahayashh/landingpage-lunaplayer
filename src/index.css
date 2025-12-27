@@ -15,8 +15,8 @@
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
   
-  --font-sans: "Outfit", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Space Mono", monospace;
+  --font-mono: "Space Mono", monospace;
 }
 
 :root {
@@ -43,31 +43,31 @@
 }
 
 .dark {
-  /* Dark Mode - True Black with Blue Accents */
-  --background: #0a0a0a;          /* Near black */
-  --foreground: #fafafa;
+  /* Dark Mode - Softer contrast */
+  --background: #121212;          /* Softer dark background */
+  --foreground: #e4e4e7;          /* Softer white text */
   
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
   
-  --secondary: #141414;           /* Slightly lighter black */
-  --secondary-foreground: #fafafa;
+  --secondary: #1a1a1a;           /* Slightly lighter */
+  --secondary-foreground: #e4e4e7;
   
   --accent: #60a5fa;
-  --accent-foreground: #0a0a0a;
+  --accent-foreground: #121212;
   
-  --muted: #171717;               /* Muted dark */
+  --muted: #1e1e1e;               /* Muted dark */
   --muted-foreground: #a1a1aa;
   
-  --card: #141414;                /* Card background */
-  --card-foreground: #fafafa;
+  --card: #1a1a1a;                /* Card background */
+  --card-foreground: #e4e4e7;
   
-  --border: #262626;              /* Subtle border */
+  --border: #2a2a2a;              /* Subtle border */
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground transition-colors duration-300 antialiased font-sans selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground transition-colors duration-300 antialiased font-mono selection:bg-primary selection:text-primary-foreground;
   }
 }
 

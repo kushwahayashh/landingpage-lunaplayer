@@ -24,8 +24,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Outfit"', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"Space Mono"', 'monospace'],
+        mono: ['"Space Mono"', 'monospace'],
       },
     },
   },
