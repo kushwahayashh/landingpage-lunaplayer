@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { BsSunFill, BsMoonStarsFill } from 'react-icons/bs';
@@ -44,6 +45,18 @@ const Header = () => {
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -116,7 +129,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isMobileMenuOpen && createPortal(
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -169,7 +182,8 @@ const Header = () => {
                 </div>
               </nav>
             </div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
       </AnimatePresence>
     </header>
