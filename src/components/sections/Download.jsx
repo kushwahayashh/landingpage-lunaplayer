@@ -7,10 +7,6 @@ const Download = () => {
   return (
     <Section id="download" className="relative py-16 md:py-20">
       <div className="max-w-5xl mx-auto">
-        <p className="text-center text-sm text-muted-foreground mb-12 px-4">
-          By downloading, you agree to our <a href="#" className="underline hover:text-foreground">Terms</a> and <a href="#" className="underline hover:text-foreground">Privacy Policy</a>.
-        </p>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Source Code */}
           <div className="flex flex-col items-center text-center p-8 md:p-10 bg-muted/30">
